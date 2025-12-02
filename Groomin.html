@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroominAja - Grooming Kucing Profesional Palembang</title>
+    <meta name="description" content="GroominAja menyediakan layanan grooming kucing profesional di Palembang. Mandi, sisir bulu, potong kuku, spa treatment dengan home service antar-jemput.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2a9d8f',
+                        'primary-dark': '#238b7e',
+                        secondary: '#e0f2f1',
+                        accent: '#e9a84d',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+        .gradient-hero { background: linear-gradient(135deg, #2a9d8f 0%, #3ab4a5 100%); }
+        .gradient-soft { background: linear-gradient(135deg, #f0fdf9 0%, #e6f7f4 100%); }
+        .shadow-card { box-shadow: 0 4px 20px -4px rgba(42, 157, 143, 0.15); }
+        .shadow-card-hover { box-shadow: 0 12px 40px -8px rgba(42, 157, 143, 0.25); }
+        .shadow-button { box-shadow: 0 4px 14px -2px rgba(42, 157, 143, 0.4); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .animate-shake { animation: shake 0.5s ease-in-out; }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .animate-pulse-ring { animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        html { scroll-behavior: smooth; }
+        
+        .testimonial-card { animation: fadeUp 0.5s ease-out forwards; }
+
+        /* Toast */
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+    <!-- ============================================ -->
+    <!-- NAVBAR -->
+    <!-- ============================================ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="flex items-center gap-2">
+                    <span class="text-2xl"><img src="logo_groominaja.png" alt="GroominAja" class="h-10 w-auto"></span>
+                    <span class="font-bold text-lg text-gray-800">GroominAja</span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#home" class="text-gray-600 hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="#paket" class="text-gray-600 hover:text-primary font-medium transition-colors">Paket</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-primary font-medium transition-colors">Tentang</a>
+                    <a href="#testimoni" class="text-gray-600 hover:text-primary font-medium transition-colors">Testimoni</a>
+                    <a href="#kontak" class="text-gray-600 hover:text-primary font-medium transition-colors">Kontak</a>
+                    <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20booking%20grooming" target="_blank" class="gradient-hero text-white px-5 py-2 rounded-lg font-semibold shadow-button hover:opacity-90 transition-opacity">
+                        Hubungi
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-800">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-100">
+                <div class="flex flex-col gap-3">
+                    <a href="#home" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Home</a>
+                    <a href="#paket" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Paket</a>
+                    <a href="#tentang" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Tentang</a>
+                    <a href="#testimoni" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Testimoni</a>
+                    <a href="#kontak" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Kontak</a>
+                    <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20booking%20grooming" target="_blank" class="mx-4 gradient-hero text-white px-5 py-2 rounded-lg font-semibold text-center">
+                        Hubungi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- HOME PAGE -->
+    <!-- ============================================ -->
+    <div id="homePage">
+        <!-- Hero Section -->
+        <section id="home" class="pt-24 pb-16 gradient-soft">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-10">
+                    <div class="flex-1 text-center lg:text-left">
+                        <span class="inline-block bg-secondary text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+                            🐱 Grooming Kucing
+                        </span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-4 leading-tight">
+                            Perawatan Terbaik untuk <span class="text-primary">Kucing Kesayangan</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                            GroominAja menyediakan layanan grooming untuk kucing Anda. 
+                            Mandi, sisir bulu, potong kuku, hingga spa treatment semua dilakukan dengan penuh kasih sayang.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#paket" class="gradient-hero text-white px-8 py-3.5 rounded-xl font-bold shadow-button hover:opacity-90 transition-opacity text-center">
+                                Lihat Paket & Harga
+                            </a>
+                            <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20konsultasi" target="_blank" class="bg-white border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-bold hover:bg-secondary transition-colors text-center">
+                                Chat WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 gradient-hero rounded-full blur-3xl opacity-20 scale-110"></div>
+                            <div class="relative text-9xl animate-float"><img src="logo_groominaja.png" alt="GroominAja Logo" class="relative w-72 md:w-96 animate-float"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="grid md:grid-cols-3 gap-6 mt-16">
+                    <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                        <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl">🛡️</div>
+                        <h3 class="font-bold text-gray-800 mb-2">Groomer Profesional</h3>
+                        <p class="text-sm text-gray-600">Ditangani groomer berpengalaman & ramah kucing</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                        <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl">🚗</div>
+                        <h3 class="font-bold text-gray-800 mb-2">Home Service atau Antar-jemput</h3>
+                        <p class="text-sm text-gray-600">Antar-jemput +Rp 25.000 sekota Palembang</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                        <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl">✨</div>
+                        <h3 class="font-bold text-gray-800 mb-2">Hasil Maksimal</h3>
+                        <p class="text-sm text-gray-600">Kucing bersih, wangi, dan sehat setelah grooming</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Package Section -->
+        <section id="paket" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                        Paket <span class="text-primary">Grooming</span>
+                    </h2>
+                    <p class="text-gray-600 max-w-xl mx-auto">
+                        Pilih paket yang sesuai dengan kebutuhan kucing kesayangan Anda
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Paket Basic -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border border-gray-100">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Paket Basic</h3>
+                            <div class="text-3xl font-extrabold text-primary">Rp 50.000</div>
+                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Mandi</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Sisir bulu</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Potong kuku</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Pembersihan telinga</span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPackage('Paket Basic', 50000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all">
+                            Pesan Paket
+                        </button>
+                    </div>
+
+                    <!-- Paket Standard -->
+                    <div class="relative bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border-2 border-primary ring-4 ring-primary/10">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-hero text-white px-4 py-1 rounded-full text-xs font-bold">
+                            ⭐ Populer
+                        </div>
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Paket Standard</h3>
+                            <div class="text-3xl font-extrabold text-primary">Rp 75.000</div>
+                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Grooming paket Basic</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Parfum</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Vitamin bulu</span>
+                            </li>
+                            </ul>
+                        <button onclick="selectPackage('Paket Standard', 75000)" class="w-full py-3 rounded-xl font-bold gradient-hero text-white shadow-button hover:opacity-90 transition-all">
+                            Pesan Paket
+                        </button>
+                    </div>
+
+                    <!-- Paket Premium -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border border-gray-100">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Paket Premium</h3>
+                            <div class="text-3xl font-extrabold text-primary">Rp 100.000</div>
+                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Full Grooming</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Cukur bulu stylish</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span class="text-gray-600">Spa treatment (untuk kutu, jamur, dll)</span>
+                            </li>
+                            </ul>
+                        <button onclick="selectPackage('Paket Premium', 100000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all">
+                            Pesan Paket
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Home Service Info -->
+                <div class="mt-12 max-w-2xl mx-auto">
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+                        <h3 class="font-bold text-gray-800 mb-2">🚗 Layanan Home service / Antar-Jemput</h3>
+                        <p class="text-gray-600 mb-3">
+                            Tambahan <span class="font-bold text-amber-700">Rp 25.000</span> untuk home service atau
+                            (antar-jemput) khusus sekota Palembang
+                        </p>
+                        <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20booking%20dengan%20layanan%20antar-jemput" target="_blank" class="inline-block bg-amber-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-amber-600 transition-colors">
+                            Booking Home service / Antar-jemput
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="tentang" class="py-20 gradient-soft">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6">
+                            Tentang <span class="text-primary">GroominAja</span>
+                        </h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            GroominAja adalah layanan grooming kucing profesional yang berlokasi di Palembang. 
+                            Kami berkomitmen memberikan perawatan terbaik untuk kucing kesayangan Anda dengan 
+                            penuh kasih sayang dan keahlian.
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Tim groomer kami terlatih dalam menangani berbagai jenis kucing dengan pendekatan 
+                            yang lembut dan sabar. Kami menggunakan produk grooming berkualitas tinggi yang 
+                            aman untuk kucing Anda.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">💖</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Penuh Kasih Sayang</h4>
+                                    <p class="text-sm text-gray-600">Kami memperlakukan setiap kucing seperti milik sendiri</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">🏆</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Produk Berkualitas</h4>
+                                    <p class="text-sm text-gray-600">Menggunakan shampoo & produk premium khusus kucing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                            <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">🏆</div>
+                            <div class="text-2xl font-extrabold text-primary mb-1">3+</div>
+                            <div class="text-sm text-gray-600">Tahun Pengalaman</div>
+                        </div>
+                            <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                            <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">💯</div>
+                            <div class="text-2xl font-extrabold text-primary mb-1">100%</div>
+                            <div class="text-sm text-gray-600">Kepuasan Pelanggan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section id="testimoni" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                         <span class="text-primary">Testimoni</span>
+                    </h2>
+                    <p class="text-gray-600 max-w-xl mx-auto">
+                        Testimoni langsung dari pelanggan setia GroominAja
+                    </p>
+                </div>
+
+                <!-- Testimonial Form -->
+                <div class="max-w-xl mx-auto mb-12">
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-gray-100">
+                        <h3 class="font-bold text-gray-800 mb-4">Tulis Testimoni Anda</h3>
+                        <form onsubmit="submitTestimonial(event)" class="space-y-4">
+                            <input type="text" id="testimonialName" placeholder="Nama Anda" maxlength="50" required
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+                            <textarea id="testimonialMessage" placeholder="Ceritakan pengalaman Anda..." rows="3" maxlength="200" required
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"></textarea>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-gray-600">Rating:</span>
+                                    <div id="ratingStars" class="flex gap-1">
+                                        <button type="button" onclick="setRating(1)" class="star text-2xl text-amber-400">★</button>
+                                        <button type="button" onclick="setRating(2)" class="star text-2xl text-amber-400">★</button>
+                                        <button type="button" onclick="setRating(3)" class="star text-2xl text-amber-400">★</button>
+                                        <button type="button" onclick="setRating(4)" class="star text-2xl text-amber-400">★</button>
+                                        <button type="button" onclick="setRating(5)" class="star text-2xl text-amber-400">★</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="gradient-hero text-white px-6 py-2 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity flex items-center gap-2">
+                                    Kirim
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Testimonials Grid -->
+                <div id="testimonialGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Testimonials will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="py-20 gradient-soft">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                        Hubungi <span class="text-primary">Kami</span>
+                    </h2>
+                    <p class="text-gray-600 max-w-xl mx-auto">
+                        Hubungi kami untuk booking atau konsultasi seputar grooming kucing
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-card">
+                            <h3 class="font-bold text-gray-800 mb-4 text-lg">Kontak</h3>
+                            <div class="space-y-4">
+                                <a href="https://wa.me/6281271022424" target="_blank" class="flex items-center gap-4 text-gray-600 hover:text-primary transition-colors">
+                                    <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-xl">📱</div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">WhatsApp</p>
+                                        <p class="font-semibold text-gray-800">0812-7102-2424</p>
+                                    </div>
+                                </a>
+                                    <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-xl">🕐</div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Jam Operasional</p>
+                                        <p class="font-semibold text-gray-800">08:00 - 20:00 WIB</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 shadow-card">
+                            <h3 class="font-bold text-gray-800 mb-4 text-lg">Alamat</h3>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0 text-xl">📍</div>
+                                <div>
+                                    <p class="font-semibold text-gray-800 mb-1">GroominAja Palembang</p>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                                                            </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <div class="gradient-hero rounded-2xl p-8 text-white w-full text-center">
+                            <div class="text-6xl mb-4">🐱</div>
+                            <h3 class="font-bold text-2xl mb-2">Siap Grooming Kucing Anda?</h3>
+                            <p class="text-white/80 mb-6">
+                                Hubungi kami sekarang untuk booking atau konsultasi gratis
+                            </p>
+                            <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20booking%20grooming%20untuk%20kucing%20saya" target="_blank" class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+                                💬 Chat WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-100 py-8">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🐱</span>
+                        <div>
+                            <p class="font-bold text-gray-800">GroominAja</p>
+                            <p class="text-sm text-gray-600">Grooming Kucing Palembang</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-6 text-sm">
+                        <a href="#home" class="text-gray-600 hover:text-primary transition-colors">Home</a>
+                        <a href="#paket" class="text-gray-600 hover:text-primary transition-colors">Paket</a>
+                        <a href="#tentang" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
+                        <a href="#testimoni" class="text-gray-600 hover:text-primary transition-colors">Testimoni</a>
+                        <a href="#kontak" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-100 mt-6 pt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        © 2024 GroominAja. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- BOOKING PAGE -->
+    <!-- ============================================ -->
+    <div id="bookingPage" class="container mx-auto px-4 py-8 hidden">
+        <div class="max-w-2xl mx-auto pt-20">
+            <button onclick="showHome()" class="text-primary hover:text-primary-dark mb-6 font-semibold flex items-center gap-2">
+                ← Kembali
+            </button>
+
+            <div id="successMessage" class="bg-white rounded-2xl shadow-card p-8 text-center hidden animate-fade-up">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-4xl">✅</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Pesanan Berhasil Dikirim!</h2>
+                <p class="text-gray-600 mb-6">Admin akan segera menghubungi Anda via WhatsApp untuk konfirmasi</p>
+                <button onclick="showHome()" class="gradient-hero text-white px-8 py-3 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
+                    Kembali ke Home
+                </button>
+            </div>
+
+            <div id="bookingForm" class="bg-white rounded-2xl shadow-card p-8 animate-fade-up">
+                <h2 class="text-2xl font-bold text-primary mb-6">Form Booking</h2>
+                
+                <div class="bg-primary/5 rounded-xl p-4 mb-6">
+                    <h3 class="font-bold text-primary" id="selectedPackageName"></h3>
+                    <p class="text-2xl font-extrabold text-primary" id="selectedPackagePrice"></p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="flex items-center text-gray-700 font-semibold mb-2">
+                            👤 Nama Lengkap
+                        </label>
+                        <input type="text" id="inputName" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan nama Anda">
+                    </div>
+
+                    <div>
+                        <label class="flex items-center text-gray-700 font-semibold mb-2">
+                            📱 Nomor WhatsApp
+                        </label>
+                        <input type="tel" id="inputPhone" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="08xxxxxxxxxx">
+                    </div>
+
+                    <div>
+                        <label class="flex items-center text-gray-700 font-semibold mb-2">
+                            📍 Alamat Lengkap
+                        </label>
+                        <textarea id="inputAddress" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50 resize-none" placeholder="Masukkan alamat untuk home grooming"></textarea>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="flex items-center text-gray-700 font-semibold mb-2">
+                                📅 Tanggal
+                            </label>
+                            <input type="date" id="inputDate" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50">
+                        </div>
+
+                        <div>
+                            <label class="flex items-center text-gray-700 font-semibold mb-2">
+                                🕐 Waktu
+                            </label>
+                            <select id="inputTime" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50">
+                                <option value="">Pilih waktu</option>
+                                <option value="09:00">09:00 WIB</option>
+                                <option value="11:00">11:00 WIB</option>
+                                <option value="13:00">13:00 WIB</option>
+                                <option value="15:00">15:00 WIB</option>
+                                <option value="17:00">17:00 WIB</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="flex items-center text-gray-700 font-semibold mb-2">
+                            📝 Catatan Tambahan
+                        </label>
+                        <textarea id="inputNotes" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50 resize-none" placeholder="Kondisi khusus kucing, alergi, dll"></textarea>
+                    </div>
+
+                    <button onclick="submitBooking()" class="w-full gradient-hero text-white py-4 rounded-xl font-bold text-lg shadow-button hover:opacity-90 transition-opacity">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ADMIN LOGIN MODAL -->
+    <!-- ============================================ -->
+    <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 animate-fade-up">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-primary flex items-center gap-2">🔒 Admin Login</h2>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">👤 Username</label>
+                    <input type="text" id="adminUsername" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan username">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">🔑 Password</label>
+                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan password">
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button onclick="loginAdmin()" class="flex-1 gradient-hero text-white py-3 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
+                        Login
+                    </button>
+                    <button onclick="closeAdminModal()" class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                        Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ADMIN PAGE -->
+    <!-- ============================================ -->
+    <div id="adminPage" class="min-h-screen bg-gray-50 hidden">
+        <div class="max-w-6xl mx-auto px-4 py-8 pt-24">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="logoutAdmin()" class="text-primary hover:text-primary-dark font-semibold flex items-center gap-2">
+                    ← Logout
+                </button>
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-600">Admin Panel</span>
+                    <span id="notifBadge" class="hidden bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">0</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-primary mb-6">Admin Dashboard</h2>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-primary/5 rounded-xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-xl">👥</div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Booking</p>
+                                <p class="text-2xl font-bold text-primary" id="totalBookings">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 rounded-xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">📅</div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Booking Hari Ini</p>
+                                <p class="text-2xl font-bold text-green-600" id="todayBookings">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 rounded-xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-xl">💰</div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Pendapatan</p>
+                                <p class="text-2xl font-bold text-amber-600" id="totalRevenue">Rp 0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Daftar Booking</h3>
+                    <button onclick="clearAllBookings()" class="text-red-500 hover:text-red-700 text-sm font-semibold flex items-center gap-1">
+                        🗑️ Hapus Semua Data
+                    </button>
+                </div>
+                <div id="bookingsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- FLOATING ADMIN BUTTON -->
+    <!-- ============================================ -->
+    <button id="adminBtn" onclick="showAdminModal()" class="fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all z-40" title="Admin Login">
+        <span>🔒</span>
+        <span id="adminNotifDot" class="hidden absolute -top-1 -right-1 bg-red-500 w-5 h-5 rounded-full text-xs flex items-center justify-center font-bold">0</span>
+        <span id="adminNotifRing" class="hidden absolute -top-1 -right-1 bg-red-500 w-5 h-5 rounded-full animate-pulse-ring"></span>
+    </button>
+
+    <!-- ============================================ -->
+    <!-- TOAST NOTIFICATION -->
+    <!-- ============================================ -->
+    <div id="toast" class="toast fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 gradient-hero text-white px-6 py-4 rounded-xl shadow-lg z-50">
+        <p id="toastMessage" class="font-semibold"></p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script>
+        // ============================================
+        // KONFIGURASI - GANTI SESUAI KEBUTUHAN ANDA
+        // ============================================
+        const ADMIN_WHATSAPP = '6281271022424';
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'admin123';
+        // ============================================
+
+        // State management
+        let selectedPackage = {};
+        let bookings = [];
+        let isAdminLoggedIn = false;
+        let currentRating = 5;
+
+        // Initial testimonials
+        let testimonials = [
+            { id: 1, name: "Rina Putri", message: "Kucing saya jadi wangi dan bersih banget! Groomernya sabar dan ramah. Recommended!", rating: 5, date: "28 Nov 2024" },
+            { id: 2, name: "Ahmad Fauzi", message: "Pelayanan cepat dan hasilnya memuaskan. Home servicenya juga tepat waktu.", rating: 5, date: "25 Nov 2024" },
+            { id: 3, name: "Dewi Sari", message: "Sudah 3x pakai jasa GroominAja, selalu puas dengan hasilnya. Harga juga terjangkau.", rating: 4, date: "20 Nov 2024" },
+        ];
+
+        // ============================================
+        // LOCAL STORAGE
+        // ============================================
+        function loadBookings() {
+            const saved = localStorage.getItem('groomingBookings');
+            if (saved) {
+                bookings = JSON.parse(saved);
+            }
+        }
+
+        function saveBookings() {
+            localStorage.setItem('groomingBookings', JSON.stringify(bookings));
+            updateAdminNotification();
+        }
+
+        // ============================================
+        // NOTIFICATION
+        // ============================================
+        function updateAdminNotification() {
+            const pendingCount = bookings.filter(b => b.status === 'pending').length;
+            const badge = document.getElementById('notifBadge');
+            const dot = document.getElementById('adminNotifDot');
+            const ring = document.getElementById('adminNotifRing');
+            
+            if (pendingCount > 0) {
+                badge.classList.remove('hidden');
+                badge.textContent = pendingCount;
+                dot.classList.remove('hidden');
+                dot.textContent = pendingCount;
+                ring.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+                dot.classList.add('hidden');
+                ring.classList.add('hidden');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        function showHome() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('bookingPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+            document.getElementById('navbar').classList.remove('hidden');
+        }
+
+        function showBooking() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('bookingPage').classList.remove('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+            document.getElementById('bookingForm').classList.remove('hidden');
+        }
+
+        // ============================================
+        // ADMIN
+        // ============================================
+        function showAdminModal() {
+            if (isAdminLoggedIn) {
+                showAdmin();
+            } else {
+                document.getElementById('adminModal').classList.remove('hidden');
+                document.getElementById('adminModal').classList.add('flex');
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+            document.getElementById('adminModal').classList.remove('flex');
+            document.getElementById('adminUsername').value = '';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                closeAdminModal();
+                showAdmin();
+                showToast('Login berhasil! Selamat datang Admin');
+            } else {
+                alert('Username atau password salah!');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            showHome();
+            showToast('Logout berhasil');
+        }
+
+        function showAdmin() {
+            if (!isAdminLoggedIn) {
+                showAdminModal();
+                return;
+            }
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('bookingPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.remove('hidden');
+            document.getElementById('navbar').classList.add('hidden');
+            renderAdmin();
+        }
+
+        // ============================================
+        // BOOKING
+        // ============================================
+        function selectPackage(name, price) {
+            selectedPackage = { name, price };
+            document.getElementById('selectedPackageName').textContent = name;
+            document.getElementById('selectedPackagePrice').textContent = 'Rp ' + price.toLocaleString('id-ID');
+            
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('inputDate').setAttribute('min', today);
+            
+            showBooking();
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('inputName').value;
+            const phone = document.getElementById('inputPhone').value;
+            const address = document.getElementById('inputAddress').value;
+            const date = document.getElementById('inputDate').value;
+            const time = document.getElementById('inputTime').value;
+            const notes = document.getElementById('inputNotes').value;
+
+            if (!name || !phone || !address || !date || !time) {
+                alert('Mohon lengkapi semua data yang diperlukan');
+                return;
+            }
+
+            const booking = {
+                id: Date.now(),
+                name,
+                phone,
+                address,
+                date,
+                time,
+                notes,
+                package: selectedPackage,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+
+            bookings.push(booking);
+            saveBookings();
+
+            // Clear form
+            document.getElementById('inputName').value = '';
+            document.getElementById('inputPhone').value = '';
+            document.getElementById('inputAddress').value = '';
+            document.getElementById('inputDate').value = '';
+            document.getElementById('inputTime').value = '';
+            document.getElementById('inputNotes').value = '';
+
+            // Show success message
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+
+            // Shake admin button
+            const adminBtn = document.getElementById('adminBtn');
+            adminBtn.classList.add('animate-shake');
+            setTimeout(() => {
+                adminBtn.classList.remove('animate-shake');
+            }, 500);
+
+            showToast('🔔 Pesanan baru masuk!');
+        }
+
+        // ============================================
+        // ADMIN DASHBOARD
+        // ============================================
+        function renderAdmin() {
+            loadBookings();
+
+            const total = bookings.length;
+            const today = new Date().toISOString().split('T')[0];
+            const todayCount = bookings.filter(b => b.date === today).length;
+            const revenue = bookings.reduce((sum, b) => sum + b.package.price, 0);
+
+            document.getElementById('totalBookings').textContent = total;
+            document.getElementById('todayBookings').textContent = todayCount;
+            document.getElementById('totalRevenue').textContent = 'Rp ' + revenue.toLocaleString('id-ID');
+
+            const listContainer = document.getElementById('bookingsList');
+            
+            if (bookings.length === 0) {
+                listContainer.innerHTML = '<div class="text-center py-12 text-gray-500"><p class="text-4xl mb-4">📅</p><p>Belum ada booking</p></div>';
+                return;
+            }
+
+            const sortedBookings = [...bookings].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            listContainer.innerHTML = sortedBookings.map(booking => `
+                <div class="border rounded-xl p-4 md:p-5 mb-4 hover:shadow-card transition-shadow ${booking.status === 'pending' ? 'bg-amber-50 border-amber-200' : 'border-gray-200'}">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">${booking.name}</h4>
+                            <p class="text-gray-600">${booking.phone}</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-semibold self-start ${
+                            booking.status === 'pending' ? 'bg-amber-100 text-amber-800' : 
+                            booking.status === 'confirmed' ? 'bg-green-100 text-green-800' : 
+                            'bg-red-100 text-red-800'
+                        }">
+                            ${booking.status === 'pending' ? '⏳ Menunggu' : booking.status === 'confirmed' ? '✅ Dikonfirmasi' : '❌ Dibatalkan'}
+                        </span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-2 mb-4 text-sm">
+                        <p><span class="font-semibold text-gray-800">Paket:</span> <span class="text-gray-600">${booking.package.name}</span></p>
+                        <p><span class="font-semibold text-gray-800">Harga:</span> <span class="text-gray-600">Rp ${booking.package.price.toLocaleString('id-ID')}</span></p>
+                        <p><span class="font-semibold text-gray-800">Tanggal:</span> <span class="text-gray-600">${new Date(booking.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span></p>
+                        <p><span class="font-semibold text-gray-800">Waktu:</span> <span class="text-gray-600">${booking.time} WIB</span></p>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mb-3">
+                        <span class="font-semibold text-gray-800">Alamat:</span> ${booking.address}
+                    </p>
+                    
+                    ${booking.notes ? `<p class="text-sm text-gray-600 mb-4">
+                        <span class="font-semibold text-gray-800">Catatan:</span> ${booking.notes}
+                    </p>` : ''}
+
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="contactCustomer('${booking.phone}', '${booking.name}')" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">
+                            💬 Hubungi
+                        </button>
+                        ${booking.status === 'pending' ? `
+                            <button onclick="updateBookingStatus(${booking.id}, 'confirmed')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors text-sm font-semibold">
+                                ✓ Konfirmasi
+                            </button>
+                            <button onclick="updateBookingStatus(${booking.id}, 'cancelled')" class="bg-white text-red-500 border border-red-500 px-4 py-2 rounded-lg hover:bg-red-50 transition-colors text-sm font-semibold">
+                                ✕ Batal
+                            </button>
+                        ` : ''}
+                        <button onclick="deleteBooking(${booking.id})" class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm font-semibold">
+                            🗑️ Hapus
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function contactCustomer(phone, name) {
+            const message = encodeURIComponent(`Halo ${name}, terima kasih telah melakukan booking layanan grooming kucing di GroominAja. Kami akan segera memproses pesanan Anda.`);
+            const cleanPhone = phone.replace(/^0/, '62');
+            window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
+        }
+
+        function updateBookingStatus(bookingId, newStatus) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (booking) {
+                booking.status = newStatus;
+                saveBookings();
+                renderAdmin();
+                showToast(`Status booking berhasil diubah ke ${newStatus === 'confirmed' ? 'dikonfirmasi' : 'dibatalkan'}`);
+            }
+        }
+
+        function deleteBooking(bookingId) {
+            if (confirm('Yakin ingin menghapus booking ini?')) {
+                bookings = bookings.filter(b => b.id !== bookingId);
+                saveBookings();
+                renderAdmin();
+                showToast('Booking berhasil dihapus');
+            }
+        }
+
+        function clearAllBookings() {
+            if (confirm('PERHATIAN! Yakin ingin menghapus SEMUA data booking? Tindakan ini tidak bisa dibatalkan!')) {
+                bookings = [];
+                saveBookings();
+                renderAdmin();
+                showToast('Semua data booking berhasil dihapus');
+            }
+        }
+
+        // ============================================
+        // TESTIMONIALS
+        // ============================================
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('#ratingStars .star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-300');
+                    star.classList.add('text-amber-400');
+                } else {
+                    star.classList.remove('text-amber-400');
+                    star.classList.add('text-gray-300');
+                }
+            });
+        }
+
+        function submitTestimonial(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('testimonialName').value.trim();
+            const message = document.getElementById('testimonialMessage').value.trim();
+            
+            if (!name || !message) {
+                showToast('Mohon lengkapi nama dan pesan');
+                return;
+            }
+
+            const newTestimonial = {
+                id: Date.now(),
+                name: name,
+                message: message,
+                rating: currentRating,
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+            };
+
+            testimonials.unshift(newTestimonial);
+            renderTestimonials();
+            
+            document.getElementById('testimonialName').value = '';
+            document.getElementById('testimonialMessage').value = '';
+            setRating(5);
+            
+            showToast('Terima kasih! Testimoni Anda berhasil ditambahkan');
+        }
+
+        function renderTestimonials() {
+            const grid = document.getElementById('testimonialGrid');
+            grid.innerHTML = testimonials.map((t, index) => `
+                <div class="testimonial-card bg-white rounded-2xl p-6 shadow-card border border-gray-100 hover:shadow-card-hover transition-all" style="animation-delay: ${index * 0.1}s">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-xl">👤</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${t.name}</h4>
+                            <p class="text-xs text-gray-500">${t.date}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-0.5 mb-3">
+                        ${Array(5).fill(0).map((_, i) => `<span class="text-sm ${i < t.rating ? 'text-amber-400' : 'text-gray-300'}">★</span>`).join('')}
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">"${t.message}"</p>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBookings();
+            updateAdminNotification();
+            renderTestimonials();
+        });
+    </script>
+</body>
+</html>
