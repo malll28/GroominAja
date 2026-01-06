@@ -61,7 +61,6 @@
         
         .testimonial-card { animation: fadeUp 0.5s ease-out forwards; }
 
-        /* Toast */
         .toast {
             transform: translateY(100px);
             opacity: 0;
@@ -71,13 +70,23 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        .file-upload-area {
+            border: 2px dashed #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        .file-upload-area.dragover {
+            border-color: #2a9d8f;
+            background-color: #e0f2f1;
+        }
+        .file-upload-area:hover {
+            border-color: #2a9d8f;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     
-    <!-- ============================================ -->
     <!-- NAVBAR -->
-    <!-- ============================================ -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
@@ -86,7 +95,6 @@
                     <span class="font-bold text-lg text-gray-800">GroominAja</span>
                 </a>
                 
-                <!-- Desktop Nav -->
                 <div class="hidden md:flex items-center gap-6">
                     <a href="#home" class="text-gray-600 hover:text-primary font-medium transition-colors">Home</a>
                     <a href="#paket" class="text-gray-600 hover:text-primary font-medium transition-colors">Paket</a>
@@ -98,7 +106,6 @@
                     </a>
                 </div>
                 
-                <!-- Mobile Menu Button -->
                 <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-800">
                     <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -109,7 +116,6 @@
                 </button>
             </div>
             
-            <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-100">
                 <div class="flex flex-col gap-3">
                     <a href="#home" onclick="closeMobileMenu()" class="text-gray-600 hover:text-primary font-medium px-4 py-2">Home</a>
@@ -125,9 +131,7 @@
         </div>
     </nav>
 
-    <!-- ============================================ -->
     <!-- HOME PAGE -->
-    <!-- ============================================ -->
     <div id="homePage">
         <!-- Hero Section -->
         <section id="home" class="pt-24 pb-16 gradient-soft">
@@ -161,7 +165,6 @@
                     </div>
                 </div>
 
-                <!-- Features -->
                 <div class="grid md:grid-cols-3 gap-6 mt-16">
                     <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
                         <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl">🛡️</div>
@@ -195,7 +198,6 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    <!-- Paket Basic -->
                     <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border border-gray-100">
                         <div class="text-center mb-6">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">Paket Basic</h3>
@@ -224,7 +226,6 @@
                         </button>
                     </div>
 
-                    <!-- Paket Standard -->
                     <div class="relative bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border-2 border-primary ring-4 ring-primary/10">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-hero text-white px-4 py-1 rounded-full text-xs font-bold">
                             ⭐ Populer
@@ -246,13 +247,12 @@
                                 <span class="text-primary">✓</span>
                                 <span class="text-gray-600">Vitamin bulu</span>
                             </li>
-                            </ul>
+                        </ul>
                         <button onclick="selectPackage('Paket Standard', 75000)" class="w-full py-3 rounded-xl font-bold gradient-hero text-white shadow-button hover:opacity-90 transition-all">
                             Pesan Paket
                         </button>
                     </div>
 
-                    <!-- Paket Premium -->
                     <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 border border-gray-100">
                         <div class="text-center mb-6">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">Paket Premium</h3>
@@ -271,24 +271,19 @@
                                 <span class="text-primary">✓</span>
                                 <span class="text-gray-600">Spa treatment (untuk kutu, jamur, dll)</span>
                             </li>
-                            </ul>
+                        </ul>
                         <button onclick="selectPackage('Paket Premium', 100000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all">
                             Pesan Paket
                         </button>
                     </div>
                 </div>
 
-                <!-- Home Service Info -->
                 <div class="mt-12 max-w-2xl mx-auto">
                     <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
-                        <h3 class="font-bold text-gray-800 mb-2">🚗 Layanan Home service / Antar-Jemput</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">🚗 Layanan Home Service / Antar-Jemput</h3>
                         <p class="text-gray-600 mb-3">
-                            Tambahan <span class="font-bold text-amber-700">Rp 25.000</span> untuk home service atau
-                            (antar-jemput) khusus sekota Palembang
+                            Tambahan <span class="font-bold text-amber-700">Rp 25.000</span> untuk home service atau antar-jemput khusus sekota Palembang
                         </p>
-                        <a href="https://wa.me/6281271022424?text=Halo%20GroominAja,%20saya%20mau%20booking%20dengan%20layanan%20antar-jemput" target="_blank" class="inline-block bg-amber-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-amber-600 transition-colors">
-                            Booking Home service / Antar-jemput
-                        </a>
                     </div>
                 </div>
             </div>
@@ -330,14 +325,13 @@
                         </div>
                     </div>
 
-                    <!-- Stats -->
                     <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                        <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
                             <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">🏆</div>
                             <div class="text-2xl font-extrabold text-primary mb-1">3+</div>
                             <div class="text-sm text-gray-600">Tahun Pengalaman</div>
                         </div>
-                            <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
+                        <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:shadow-card-hover transition-shadow">
                             <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">💯</div>
                             <div class="text-2xl font-extrabold text-primary mb-1">100%</div>
                             <div class="text-sm text-gray-600">Kepuasan Pelanggan</div>
@@ -352,14 +346,13 @@
             <div class="max-w-6xl mx-auto px-4">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
-                         <span class="text-primary">Testimoni</span>
+                        <span class="text-primary">Testimoni</span>
                     </h2>
                     <p class="text-gray-600 max-w-xl mx-auto">
                         Testimoni langsung dari pelanggan setia GroominAja
                     </p>
                 </div>
 
-                <!-- Testimonial Form -->
                 <div class="max-w-xl mx-auto mb-12">
                     <div class="bg-white rounded-2xl p-6 shadow-card border border-gray-100">
                         <h3 class="font-bold text-gray-800 mb-4">Tulis Testimoni Anda</h3>
@@ -379,7 +372,7 @@
                                         <button type="button" onclick="setRating(5)" class="star text-2xl text-amber-400">★</button>
                                     </div>
                                 </div>
-                                <button type="submit" class="gradient-hero text-white px-6 py-2 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity flex items-center gap-2">
+                                <button type="submit" class="gradient-hero text-white px-6 py-2 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
                                     Kirim
                                 </button>
                             </div>
@@ -387,7 +380,6 @@
                     </div>
                 </div>
 
-                <!-- Testimonials Grid -->
                 <div id="testimonialGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Testimonials will be inserted here -->
                 </div>
@@ -418,7 +410,7 @@
                                         <p class="font-semibold text-gray-800">0812-7102-2424</p>
                                     </div>
                                 </a>
-                                    <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-4">
                                     <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-xl">🕐</div>
                                     <div>
                                         <p class="text-sm text-gray-500">Jam Operasional</p>
@@ -428,15 +420,13 @@
                             </div>
                         </div>
 
-                        
                         <div class="bg-white rounded-2xl p-6 shadow-card">
                             <h3 class="font-bold text-gray-800 mb-4 text-lg">Alamat</h3>
                             <div class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0 text-xl">📍</div>
                                 <div>
                                     <p class="font-semibold text-gray-800 mb-1">GroominAja Palembang</p>
-                                    <p class="text-gray-600 text-sm leading-relaxed">
-                                                                            </p>
+                                    <p class="text-gray-600 text-sm leading-relaxed">Palembang, Sumatera Selatan</p>
                                 </div>
                             </div>
                         </div>
@@ -492,18 +482,12 @@
                         <a href="#kontak" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
                     </div>
                 </div>
-                <div class="border-t border-gray-100 mt-6 pt-6 text-center">
-                    <p class="text-sm text-gray-600">
-                        © 2024 GroominAja. All rights reserved.
-                    </p>
-                </div>
-            </div>
+                            </div>
         </footer>
+
     </div>
 
-    <!-- ============================================ -->
     <!-- BOOKING PAGE -->
-    <!-- ============================================ -->
     <div id="bookingPage" class="container mx-auto px-4 py-8 hidden">
         <div class="max-w-2xl mx-auto pt-20">
             <button onclick="showHome()" class="text-primary hover:text-primary-dark mb-6 font-semibold flex items-center gap-2">
@@ -522,7 +506,7 @@
             </div>
 
             <div id="bookingForm" class="bg-white rounded-2xl shadow-card p-8 animate-fade-up">
-                <h2 class="text-2xl font-bold text-primary mb-6">Form Booking</h2>
+                <h2 class="text-2xl font-bold text-primary mb-6">Form Pemesanan</h2>
                 
                 <div class="bg-primary/5 rounded-xl p-4 mb-6">
                     <h3 class="font-bold text-primary" id="selectedPackageName"></h3>
@@ -546,9 +530,74 @@
 
                     <div>
                         <label class="flex items-center text-gray-700 font-semibold mb-2">
+                            🚗 Jenis Layanan
+                        </label>
+                        <select id="inputServiceType" onchange="handleServiceTypeChange()" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50">
+                            <option value="">Pilih jenis layanan</option>
+                            <option value="datang-langsung">Datang Langsung ke Tempat</option>
+                            <option value="home-service">Home Service (+ Rp 25.000)</option>
+                            <option value="antar-jemput">Antar-Jemput (+ Rp 25.000)</option>
+                        </select>
+                    </div>
+
+                    <div id="addressSection" class="hidden">
+                        <label class="flex items-center text-gray-700 font-semibold mb-2">
                             📍 Alamat Lengkap
                         </label>
-                        <textarea id="inputAddress" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50 resize-none" placeholder="Masukkan alamat untuk home grooming"></textarea>
+                        <textarea id="inputAddress" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50 resize-none" placeholder="Masukkan alamat lengkap Anda"></textarea>
+                    </div>
+
+                    <!-- Payment Section for Transportation -->
+                    <div id="transportPaymentSection" class="hidden">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <h4 class="font-bold text-amber-800 mb-2">💰 Pembayaran Biaya Transportasi</h4>
+                            <p class="text-sm text-gray-700 mb-3">
+                                Biaya transportasi sebesar <span class="font-bold text-amber-700">Rp 25.000</span> wajib dibayar terlebih dahulu. Untuk pembayaran paket grooming bisa transfer atau bayar setelah grooming selesai.
+                            </p>
+                            
+                            <div class="bg-white rounded-lg p-4 space-y-3">
+                                <h5 class="font-semibold text-gray-800 mb-2">Metode Pembayaran:</h5>
+                                
+                                                                
+                                <!-- E-Wallet -->
+                                <div class="border-b border-gray-200 pb-3">
+                                    <p class="font-semibold text-gray-700 mb-1">💳 E-Wallet</p>
+                                    <p class="text-sm text-gray-600">DANA: 0812-7102-2424</p>
+                                    <p class="text-sm text-gray-600">GoPay: 0812-7102-2424</p>
+				    <p class="text-sm text-gray-600">a.n. Malika Putri Indra Jaya</p>
+                                </div>
+                                
+                                <!-- Bank Transfer -->
+                                <div>
+                                    <p class="font-semibold text-gray-700 mb-1">🏦 Transfer Bank</p>
+                                    <p class="text-sm text-gray-600">BSI: 7251074571</p>
+                                    <p class="text-sm text-gray-600">a.n. Malika Putri Indra Jaya</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Bukti Transfer -->
+                        <div>
+                            <label class="flex items-center text-gray-700 font-semibold mb-2">
+                                📎 Upload Bukti Transfer Transportasi <span class="text-red-500 ml-1">*</span>
+                            </label>
+                            <div class="file-upload-area rounded-xl p-6 text-center cursor-pointer" id="fileUploadArea">
+                                <input type="file" id="inputPaymentProof" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                                <div id="uploadPrompt">
+                                    <div class="text-4xl mb-2">📸</div>
+                                    <p class="text-gray-600 font-medium mb-1">Klik untuk upload bukti transfer</p>
+                                    <p class="text-sm text-gray-500">atau drag & drop file di sini</p>
+                                    <p class="text-xs text-gray-400 mt-2">Format: JPG, PNG (Max 5MB)</p>
+                                </div>
+                                <div id="filePreview" class="hidden">
+                                    <img id="previewImage" class="max-w-full max-h-48 mx-auto rounded-lg mb-2">
+                                    <p id="fileName" class="text-sm text-gray-600 mb-2"></p>
+                                    <button type="button" onclick="removeFile()" class="text-red-500 hover:text-red-700 text-sm font-semibold">
+                                        🗑️ Hapus File
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
@@ -581,6 +630,23 @@
                         <textarea id="inputNotes" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50 resize-none" placeholder="Kondisi khusus kucing, alergi, dll"></textarea>
                     </div>
 
+                    <div id="totalPriceSection" class="bg-gray-50 rounded-xl p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-700">Harga Paket:</span>
+                            <span class="font-bold text-gray-800" id="packagePriceDisplay">Rp 0</span>
+                        </div>
+                        <div id="transportFeeDisplay" class="flex justify-between items-center mb-2 hidden">
+                            <span class="text-gray-700">Biaya Transportasi:</span>
+                            <span class="font-bold text-amber-700">Rp 25.000</span>
+                        </div>
+                        <div class="border-t border-gray-300 pt-2 mt-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-800 font-bold">Total:</span>
+                                <span class="font-extrabold text-primary text-xl" id="totalPriceDisplay">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <button onclick="submitBooking()" class="w-full gradient-hero text-white py-4 rounded-xl font-bold text-lg shadow-button hover:opacity-90 transition-opacity">
                         Pesan Sekarang
                     </button>
@@ -589,9 +655,7 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
     <!-- ADMIN LOGIN MODAL -->
-    <!-- ============================================ -->
     <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
         <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 animate-fade-up">
             <div class="flex items-center justify-between mb-6">
@@ -623,9 +687,7 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
     <!-- ADMIN PAGE -->
-    <!-- ============================================ -->
     <div id="adminPage" class="min-h-screen bg-gray-50 hidden">
         <div class="max-w-6xl mx-auto px-4 py-8 pt-24">
             <div class="flex justify-between items-center mb-6">
@@ -682,48 +744,46 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
     <!-- FLOATING ADMIN BUTTON -->
-    <!-- ============================================ -->
     <button id="adminBtn" onclick="showAdminModal()" class="fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all z-40" title="Admin Login">
         <span>🔒</span>
         <span id="adminNotifDot" class="hidden absolute -top-1 -right-1 bg-red-500 w-5 h-5 rounded-full text-xs flex items-center justify-center font-bold">0</span>
         <span id="adminNotifRing" class="hidden absolute -top-1 -right-1 bg-red-500 w-5 h-5 rounded-full animate-pulse-ring"></span>
     </button>
 
-    <!-- ============================================ -->
     <!-- TOAST NOTIFICATION -->
-    <!-- ============================================ -->
     <div id="toast" class="toast fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 gradient-hero text-white px-6 py-4 rounded-xl shadow-lg z-50">
         <p id="toastMessage" class="font-semibold"></p>
     </div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT -->
-    <!-- ============================================ -->
+    <!-- IMAGE MODAL -->
+    <div id="imageModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4" onclick="closeImageModal()">
+        <div class="relative max-w-4xl max-h-[90vh] w-full" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <img id="modalImage" src="" alt="Bukti Transfer" class="max-w-full max-h-[85vh] w-auto h-auto mx-auto rounded-lg shadow-2xl">
+            <div class="text-center mt-4">
+                <p class="text-white font-semibold">Bukti Transfer Transportasi</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ============================================
-        // KONFIGURASI - GANTI SESUAI KEBUTUHAN ANDA
-        // ============================================
         const ADMIN_WHATSAPP = '6281271022424';
         const ADMIN_USERNAME = 'admin';
         const ADMIN_PASSWORD = 'admin123';
-        // ============================================
 
-        // State management
         let selectedPackage = {};
         let bookings = [];
         let isAdminLoggedIn = false;
         let currentRating = 5;
+        let paymentProofFile = null;
 
-        // Initial testimonials
-        let testimonials = [
-         
-        ];
+        let testimonials = [];
 
-        // ============================================
-        // LOCAL STORAGE
-        // ============================================
         function loadBookings() {
             const saved = localStorage.getItem('groomingBookings');
             if (saved) {
@@ -736,9 +796,6 @@
             updateAdminNotification();
         }
 
-        // ============================================
-        // NOTIFICATION
-        // ============================================
         function updateAdminNotification() {
             const pendingCount = bookings.filter(b => b.status === 'pending').length;
             const badge = document.getElementById('notifBadge');
@@ -770,9 +827,6 @@
             }, 3000);
         }
 
-        // ============================================
-        // NAVIGATION
-        // ============================================
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const menuIcon = document.getElementById('menuIcon');
@@ -808,9 +862,6 @@
             document.getElementById('bookingForm').classList.remove('hidden');
         }
 
-        // ============================================
-        // ADMIN
-        // ============================================
         function showAdminModal() {
             if (isAdminLoggedIn) {
                 showAdmin();
@@ -859,13 +910,12 @@
             renderAdmin();
         }
 
-        // ============================================
-        // BOOKING
-        // ============================================
         function selectPackage(name, price) {
             selectedPackage = { name, price };
             document.getElementById('selectedPackageName').textContent = name;
             document.getElementById('selectedPackagePrice').textContent = 'Rp ' + price.toLocaleString('id-ID');
+            document.getElementById('packagePriceDisplay').textContent = 'Rp ' + price.toLocaleString('id-ID');
+            document.getElementById('totalPriceDisplay').textContent = 'Rp ' + price.toLocaleString('id-ID');
             
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('inputDate').setAttribute('min', today);
@@ -873,28 +923,135 @@
             showBooking();
         }
 
+        function handleServiceTypeChange() {
+            const serviceType = document.getElementById('inputServiceType').value;
+            const addressSection = document.getElementById('addressSection');
+            const transportPaymentSection = document.getElementById('transportPaymentSection');
+            const transportFeeDisplay = document.getElementById('transportFeeDisplay');
+            
+            if (serviceType === 'home-service' || serviceType === 'antar-jemput') {
+                addressSection.classList.remove('hidden');
+                transportPaymentSection.classList.remove('hidden');
+                transportFeeDisplay.classList.remove('hidden');
+                updateTotalPrice(true);
+            } else {
+                addressSection.classList.add('hidden');
+                transportPaymentSection.classList.add('hidden');
+                transportFeeDisplay.classList.add('hidden');
+                updateTotalPrice(false);
+            }
+        }
+
+        function updateTotalPrice(includeTransport) {
+            const packagePrice = selectedPackage.price || 0;
+            const transportFee = includeTransport ? 25000 : 0;
+            const total = packagePrice + transportFee;
+            
+            document.getElementById('totalPriceDisplay').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar! Maksimal 5MB');
+                    return;
+                }
+                
+                if (!file.type.startsWith('image/')) {
+                    alert('File harus berupa gambar!');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    paymentProofFile = e.target.result; // Save base64 data
+                    document.getElementById('previewImage').src = e.target.result;
+                    document.getElementById('fileName').textContent = file.name;
+                    document.getElementById('uploadPrompt').classList.add('hidden');
+                    document.getElementById('filePreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeFile() {
+            paymentProofFile = null;
+            document.getElementById('inputPaymentProof').value = '';
+            document.getElementById('uploadPrompt').classList.remove('hidden');
+            document.getElementById('filePreview').classList.add('hidden');
+        }
+
+        // Drag and drop functionality
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        
+        fileUploadArea.addEventListener('click', () => {
+            document.getElementById('inputPaymentProof').click();
+        });
+        
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('dragover');
+        });
+        
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('dragover');
+        });
+        
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('dragover');
+            
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const input = document.getElementById('inputPaymentProof');
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                input.files = dataTransfer.files;
+                handleFileSelect({ target: input });
+            }
+        });
+
         function submitBooking() {
             const name = document.getElementById('inputName').value;
             const phone = document.getElementById('inputPhone').value;
+            const serviceType = document.getElementById('inputServiceType').value;
             const address = document.getElementById('inputAddress').value;
             const date = document.getElementById('inputDate').value;
             const time = document.getElementById('inputTime').value;
             const notes = document.getElementById('inputNotes').value;
 
-            if (!name || !phone || !address || !date || !time) {
+            if (!name || !phone || !serviceType || !date || !time) {
                 alert('Mohon lengkapi semua data yang diperlukan');
                 return;
             }
+
+            if ((serviceType === 'home-service' || serviceType === 'antar-jemput') && !address) {
+                alert('Mohon isi alamat lengkap');
+                return;
+            }
+
+            if ((serviceType === 'home-service' || serviceType === 'antar-jemput') && !paymentProofFile) {
+                alert('Mohon upload bukti transfer biaya transportasi');
+                return;
+            }
+
+            const transportFee = (serviceType === 'home-service' || serviceType === 'antar-jemput') ? 25000 : 0;
+            const totalPrice = selectedPackage.price + transportFee;
 
             const booking = {
                 id: Date.now(),
                 name,
                 phone,
-                address,
+                serviceType,
+                address: address || '-',
                 date,
                 time,
                 notes,
                 package: selectedPackage,
+                transportFee,
+                totalPrice,
+                paymentProofImage: paymentProofFile || null,
                 status: 'pending',
                 createdAt: new Date().toISOString()
             };
@@ -902,38 +1059,77 @@
             bookings.push(booking);
             saveBookings();
 
+            // Send WhatsApp notification to admin
+            sendWhatsAppNotification(booking);
+
             // Clear form
             document.getElementById('inputName').value = '';
             document.getElementById('inputPhone').value = '';
+            document.getElementById('inputServiceType').value = '';
             document.getElementById('inputAddress').value = '';
             document.getElementById('inputDate').value = '';
             document.getElementById('inputTime').value = '';
             document.getElementById('inputNotes').value = '';
+            removeFile();
+            document.getElementById('addressSection').classList.add('hidden');
+            document.getElementById('transportPaymentSection').classList.add('hidden');
+            document.getElementById('transportFeeDisplay').classList.add('hidden');
 
-            // Show success message
             document.getElementById('bookingForm').classList.add('hidden');
             document.getElementById('successMessage').classList.remove('hidden');
 
-            // Shake admin button
             const adminBtn = document.getElementById('adminBtn');
             adminBtn.classList.add('animate-shake');
             setTimeout(() => {
                 adminBtn.classList.remove('animate-shake');
             }, 500);
 
-            showToast('🔔 Pesanan baru masuk!');
+     
         }
 
-        // ============================================
-        // ADMIN DASHBOARD
-        // ============================================
+        function sendWhatsAppNotification(booking) {
+            const serviceTypeText = {
+                'datang-langsung': 'Datang Langsung',
+                'home-service': 'Home Service',
+                'antar-jemput': 'Antar-Jemput'
+            };
+
+            let message = `🔔 *BOOKING BARU GROOMINAJA*\n\n`;
+            message += `👤 Nama: ${booking.name}\n`;
+            message += `📱 Phone: ${booking.phone}\n`;
+            message += `📦 Paket: ${booking.package.name}\n`;
+            message += `💰 Harga Paket: Rp ${booking.package.price.toLocaleString('id-ID')}\n`;
+            message += `🚗 Layanan: ${serviceTypeText[booking.serviceType]}\n`;
+            
+            if (booking.transportFee > 0) {
+                message += `💵 Biaya Transport: Rp ${booking.transportFee.toLocaleString('id-ID')}\n`;
+                message += `✅ Status Pembayaran Transport: SUDAH TRANSFER (Bukti terlampir)\n`;
+            }
+            
+            message += `💳 Total: Rp ${booking.totalPrice.toLocaleString('id-ID')}\n`;
+            
+            if (booking.address !== '-') {
+                message += `📍 Alamat: ${booking.address}\n`;
+            }
+            
+            message += `📅 Tanggal: ${new Date(booking.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}\n`;
+            message += `🕐 Waktu: ${booking.time} WIB\n`;
+            
+            if (booking.notes) {
+                message += `📝 Catatan: ${booking.notes}\n`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodedMessage}`, '_blank');
+        }
+
         function renderAdmin() {
             loadBookings();
 
             const total = bookings.length;
             const today = new Date().toISOString().split('T')[0];
             const todayCount = bookings.filter(b => b.date === today).length;
-            const revenue = bookings.reduce((sum, b) => sum + b.package.price, 0);
+            const revenue = bookings.reduce((sum, b) => sum + b.totalPrice, 0);
 
             document.getElementById('totalBookings').textContent = total;
             document.getElementById('todayBookings').textContent = todayCount;
@@ -947,6 +1143,12 @@
             }
 
             const sortedBookings = [...bookings].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            const serviceTypeText = {
+                'datang-langsung': 'Datang Langsung',
+                'home-service': 'Home Service',
+                'antar-jemput': 'Antar-Jemput'
+            };
 
             listContainer.innerHTML = sortedBookings.map(booking => `
                 <div class="border rounded-xl p-4 md:p-5 mb-4 hover:shadow-card transition-shadow ${booking.status === 'pending' ? 'bg-amber-50 border-amber-200' : 'border-gray-200'}">
@@ -966,17 +1168,27 @@
                     
                     <div class="grid md:grid-cols-2 gap-2 mb-4 text-sm">
                         <p><span class="font-semibold text-gray-800">Paket:</span> <span class="text-gray-600">${booking.package.name}</span></p>
-                        <p><span class="font-semibold text-gray-800">Harga:</span> <span class="text-gray-600">Rp ${booking.package.price.toLocaleString('id-ID')}</span></p>
+                        <p><span class="font-semibold text-gray-800">Harga Paket:</span> <span class="text-gray-600">Rp ${booking.package.price.toLocaleString('id-ID')}</span></p>
+                        <p><span class="font-semibold text-gray-800">Layanan:</span> <span class="text-gray-600">${serviceTypeText[booking.serviceType]}</span></p>
+                        ${booking.transportFee > 0 ? `<p><span class="font-semibold text-gray-800">Biaya Transport:</span> <span class="text-amber-600 font-bold">Rp ${booking.transportFee.toLocaleString('id-ID')}</span></p>` : ''}
+                        <p><span class="font-semibold text-gray-800">Total:</span> <span class="text-primary font-bold">Rp ${booking.totalPrice.toLocaleString('id-ID')}</span></p>
                         <p><span class="font-semibold text-gray-800">Tanggal:</span> <span class="text-gray-600">${new Date(booking.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span></p>
                         <p><span class="font-semibold text-gray-800">Waktu:</span> <span class="text-gray-600">${booking.time} WIB</span></p>
                     </div>
                     
-                    <p class="text-sm text-gray-600 mb-3">
-                        <span class="font-semibold text-gray-800">Alamat:</span> ${booking.address}
-                    </p>
+                    ${booking.address !== '-' ? `<p class="text-sm text-gray-600 mb-3">
+                        <span class="font-semibold text-gray-800">📍 Alamat:</span> ${booking.address}
+                    </p>` : ''}
+                    
+                    ${booking.paymentProofImage ? `<div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-3">
+                        <p class="text-sm text-green-800 font-semibold mb-2">✅ Bukti Transfer Transportasi:</p>
+                        <div class="relative group">
+                            <img src="${booking.paymentProofImage}" alt="Bukti Transfer" class="max-w-full h-auto max-h-48 rounded-lg cursor-pointer hover:opacity-90 transition-opacity" onclick="showImageModal('${booking.paymentProofImage}')">
+                        </div>
+                    </div>` : ''}
                     
                     ${booking.notes ? `<p class="text-sm text-gray-600 mb-4">
-                        <span class="font-semibold text-gray-800">Catatan:</span> ${booking.notes}
+                        <span class="font-semibold text-gray-800">📝 Catatan:</span> ${booking.notes}
                     </p>` : ''}
 
                     <div class="flex gap-2 flex-wrap">
@@ -1033,9 +1245,6 @@
             }
         }
 
-        // ============================================
-        // TESTIMONIALS
-        // ============================================
         function setRating(rating) {
             currentRating = rating;
             const stars = document.querySelectorAll('#ratingStars .star');
@@ -1081,6 +1290,12 @@
 
         function renderTestimonials() {
             const grid = document.getElementById('testimonialGrid');
+            
+            if (testimonials.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-4xl mb-4">💬</p><p>Belum ada testimoni. Jadilah yang pertama!</p></div>';
+                return;
+            }
+            
             grid.innerHTML = testimonials.map((t, index) => `
                 <div class="testimonial-card bg-white rounded-2xl p-6 shadow-card border border-gray-100 hover:shadow-card-hover transition-all" style="animation-delay: ${index * 0.1}s">
                     <div class="flex items-center gap-3 mb-4">
@@ -1098,9 +1313,20 @@
             `).join('');
         }
 
-        // ============================================
-        // INITIALIZE
-        // ============================================
+        function showImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             loadBookings();
             updateAdminNotification();
