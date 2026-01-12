@@ -7,6 +7,8 @@
     <meta name="description" content="GroominAja menyediakan layanan grooming kucing profesional di Palembang. Mandi, sisir bulu, potong kuku, spa treatment dengan home service antar-jemput.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -81,6 +83,24 @@
         }
         .file-upload-area:hover {
             border-color: #2a9d8f;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #receiptContent, #receiptContent * {
+                visibility: visible;
+            }
+            #receiptContent {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -160,7 +180,7 @@
                     <div class="flex-1 flex justify-center">
                         <div class="relative">
                             <div class="absolute inset-0 gradient-hero rounded-full blur-3xl opacity-20 scale-110"></div>
-                            <div class="relative text-9xl animate-float"><img src="logo_groominaja.png" alt="GroominAja Logo" class="relative w-72 md:w-96 animate-float"></div>
+                             <div class="relative text-9xl animate-float"><img src="logo_groominaja.png" alt="GroominAja Logo" class="relative w-72 md:w-96 animate-float"></div>
                         </div>
                     </div>
                 </div>
@@ -221,7 +241,7 @@
                                 <span class="text-gray-600">Pembersihan telinga</span>
                             </li>
                         </ul>
-                        <button onclick="selectPackage('Paket Basic', 50000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all">
+                        <button onclick="selectPackage('Paket Basic', 50000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
                             Pesan Paket
                         </button>
                     </div>
@@ -248,7 +268,7 @@
                                 <span class="text-gray-600">Vitamin bulu</span>
                             </li>
                         </ul>
-                        <button onclick="selectPackage('Paket Standard', 75000)" class="w-full py-3 rounded-xl font-bold gradient-hero text-white shadow-button hover:opacity-90 transition-all">
+                        <button onclick="selectPackage('Paket Standard', 75000)" class="w-full py-3 rounded-xl font-bold gradient-hero text-white shadow-button hover:opacity-90 transition-all cursor-pointer">
                             Pesan Paket
                         </button>
                     </div>
@@ -272,7 +292,7 @@
                                 <span class="text-gray-600">Spa treatment (untuk kutu, jamur, dll)</span>
                             </li>
                         </ul>
-                        <button onclick="selectPackage('Paket Premium', 100000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all">
+                        <button onclick="selectPackage('Paket Premium', 100000)" class="w-full py-3 rounded-xl font-bold bg-secondary text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
                             Pesan Paket
                         </button>
                     </div>
@@ -460,19 +480,19 @@
                         </div>
                     </div>
 
-			<div  <h3 class="font-bold text-gray-800 mb-4 text-lg">Media Sosial</h3>
-                            <div class="flex justify-center">
-                                <a href="https://www.instagram.com/groominaja.plg/" target="_blank" class="group">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
-                                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                        </svg>
-                                    </div>
-                                    <p class="text-center mt-2 text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors">@groominaja.plg</p>
-                                </a>
-                            </div>
+                    <div class="text-center">
+                        <h3 class="font-bold text-gray-800 mb-2 text-lg">Media Sosial</h3>
+                        <div class="flex justify-center">
+                            <a href="https://www.instagram.com/groominaja.plg/" target="_blank" class="group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-center mt-2 text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors">@groominaja.plg</p>
+                            </a>
                         </div>
-
+                    </div>
 
                     <div class="flex flex-wrap items-center gap-6 text-sm">
                         <a href="#home" class="text-gray-600 hover:text-primary transition-colors">Home</a>
@@ -482,7 +502,7 @@
                         <a href="#kontak" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
                     </div>
                 </div>
-                            </div>
+            </div>
         </footer>
 
     </div>
@@ -503,6 +523,109 @@
                 <button onclick="showHome()" class="gradient-hero text-white px-8 py-3 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
                     Kembali ke Home
                 </button>
+            </div>
+
+            <!-- Receipt Section -->
+            <div id="receiptSection" class="hidden animate-fade-up">
+                <div class="bg-white rounded-2xl shadow-card p-8 mb-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-4xl">✅</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Booking Berhasil!</h2>
+                        <p class="text-gray-600">Simpan resi ini sebagai bukti booking Anda</p>
+                    </div>
+
+                    <!-- Receipt Content -->
+                    <div id="receiptContent" class="bg-gradient-to-br from-primary/5 to-secondary border-2 border-primary/20 rounded-2xl p-6">
+                        <div class="text-center mb-6 border-b-2 border-dashed border-primary/30 pb-6">
+                            <div class="text-5xl mb-2">🐱</div>
+                            <h3 class="text-2xl font-extrabold text-primary">GroominAja</h3>
+                            <p class="text-sm text-gray-600">Grooming Kucing Profesional</p>
+                            <p class="text-xs text-gray-500 mt-1">Palembang, Sumatera Selatan</p>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-4 mb-4">
+                            <div class="text-center">
+                                <p class="text-xs text-gray-500 mb-1">NOMOR RESI BOOKING</p>
+                                <p id="receiptNumber" class="text-3xl font-extrabold text-primary tracking-wider">GA-000000</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-4 mb-4">
+                            <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">DETAIL BOOKING</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Nama:</span>
+                                    <span id="receiptName" class="font-semibold text-gray-800">-</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">No. HP:</span>
+                                    <span id="receiptPhone" class="font-semibold text-gray-800">-</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Paket:</span>
+                                    <span id="receiptPackage" class="font-semibold text-primary">-</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Layanan:</span>
+                                    <span id="receiptService" class="font-semibold text-gray-800">-</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Tanggal:</span>
+                                    <span id="receiptDate" class="font-semibold text-gray-800">-</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Waktu:</span>
+                                    <span id="receiptTime" class="font-semibold text-gray-800">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-4 mb-4">
+                            <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">RINCIAN BIAYA</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Harga Paket:</span>
+                                    <span id="receiptPackagePrice" class="font-semibold text-gray-800">Rp 0</span>
+                                </div>
+                                <div id="receiptTransportFee" class="flex justify-between hidden">
+                                    <span class="text-gray-600">Biaya Transportasi:</span>
+                                    <span class="font-semibold text-amber-700">Rp 25.000</span>
+                                </div>
+                                <div class="border-t-2 border-dashed border-gray-200 pt-2 mt-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-bold text-gray-800">TOTAL:</span>
+                                        <span id="receiptTotal" class="text-xl font-extrabold text-primary">Rp 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-xs text-gray-500 border-t-2 border-dashed border-primary/30 pt-4">
+                            <p class="mb-1">⏰ Booking dibuat: <span id="receiptCreated">-</span></p>
+                            <p class="mb-3">📱 WA: 0812-7102-2424 | 📍 Palembang</p>
+                            <p class="font-semibold text-primary">Tunjukkan resi ini saat grooming</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grid md:grid-cols-3 gap-3 mt-6 no-print">
+                        <button onclick="printReceipt()" class="bg-blue-500 text-white px-4 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2">
+                            🖨️ Print Resi
+                        </button>
+                        <button onclick="downloadReceipt()" class="bg-green-500 text-white px-4 py-3 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center gap-2">
+                            📥 Download PDF
+                        </button>
+                        <button onclick="sendReceiptToWhatsApp()" class="bg-primary text-white px-4 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                            💬 Kirim ke WA
+                        </button>
+                    </div>
+
+                    <button onclick="showHome()" class="w-full mt-4 bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors no-print">
+                        Kembali ke Home
+                    </button>
+                </div>
             </div>
 
             <div id="bookingForm" class="bg-white rounded-2xl shadow-card p-8 animate-fade-up">
@@ -558,13 +681,12 @@
                             <div class="bg-white rounded-lg p-4 space-y-3">
                                 <h5 class="font-semibold text-gray-800 mb-2">Metode Pembayaran:</h5>
                                 
-                                                                
                                 <!-- E-Wallet -->
                                 <div class="border-b border-gray-200 pb-3">
                                     <p class="font-semibold text-gray-700 mb-1">💳 E-Wallet</p>
                                     <p class="text-sm text-gray-600">DANA: 0812-7102-2424</p>
                                     <p class="text-sm text-gray-600">GoPay: 0812-7102-2424</p>
-				    <p class="text-sm text-gray-600">a.n. Malika Putri Indra Jaya</p>
+                                    <p class="text-sm text-gray-600">a.n. Malika Putri Indra Jaya</p>
                                 </div>
                                 
                                 <!-- Bank Transfer -->
@@ -649,38 +771,6 @@
 
                     <button onclick="submitBooking()" class="w-full gradient-hero text-white py-4 rounded-xl font-bold text-lg shadow-button hover:opacity-90 transition-opacity">
                         Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ADMIN LOGIN MODAL -->
-    <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 animate-fade-up">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-bold text-primary flex items-center gap-2">🔒 Admin Login</h2>
-                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-gray-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-2">👤 Username</label>
-                    <input type="text" id="adminUsername" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan username">
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-2">🔑 Password</label>
-                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan password">
-                </div>
-                <div class="flex gap-2 pt-2">
-                    <button onclick="loginAdmin()" class="flex-1 gradient-hero text-white py-3 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
-                        Login
-                    </button>
-                    <button onclick="closeAdminModal()" class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
-                        Batal
                     </button>
                 </div>
             </div>
@@ -781,8 +871,15 @@
         let isAdminLoggedIn = false;
         let currentRating = 5;
         let paymentProofFile = null;
+        let currentReceipt = null;
 
         let testimonials = [];
+
+        function generateReceiptNumber() {
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 1000);
+            return `GA-${timestamp.toString().slice(-6)}${random.toString().padStart(3, '0')}`;
+        }
 
         function loadBookings() {
             const saved = localStorage.getItem('groomingBookings');
@@ -852,6 +949,7 @@
             document.getElementById('bookingPage').classList.add('hidden');
             document.getElementById('adminPage').classList.add('hidden');
             document.getElementById('navbar').classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
 
         function showBooking() {
@@ -860,6 +958,8 @@
             document.getElementById('adminPage').classList.add('hidden');
             document.getElementById('successMessage').classList.add('hidden');
             document.getElementById('bookingForm').classList.remove('hidden');
+            document.getElementById('receiptSection').classList.add('hidden');
+            window.scrollTo(0, 0);
         }
 
         function showAdminModal() {
@@ -965,7 +1065,7 @@
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    paymentProofFile = e.target.result; // Save base64 data
+                    paymentProofFile = e.target.result;
                     document.getElementById('previewImage').src = e.target.result;
                     document.getElementById('fileName').textContent = file.name;
                     document.getElementById('uploadPrompt').classList.add('hidden');
@@ -982,7 +1082,6 @@
             document.getElementById('filePreview').classList.add('hidden');
         }
 
-        // Drag and drop functionality
         const fileUploadArea = document.getElementById('fileUploadArea');
         
         fileUploadArea.addEventListener('click', () => {
@@ -1012,6 +1111,147 @@
             }
         });
 
+        function displayReceipt(booking) {
+            currentReceipt = booking;
+            
+            const serviceTypeText = {
+                'datang-langsung': 'Datang Langsung',
+                'home-service': 'Home Service',
+                'antar-jemput': 'Antar-Jemput'
+            };
+
+            document.getElementById('receiptNumber').textContent = booking.receiptNumber;
+            document.getElementById('receiptName').textContent = booking.name;
+            document.getElementById('receiptPhone').textContent = booking.phone;
+            document.getElementById('receiptPackage').textContent = booking.package.name;
+            document.getElementById('receiptService').textContent = serviceTypeText[booking.serviceType];
+            document.getElementById('receiptDate').textContent = new Date(booking.date).toLocaleDateString('id-ID', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            document.getElementById('receiptTime').textContent = booking.time + ' WIB';
+            document.getElementById('receiptPackagePrice').textContent = 'Rp ' + booking.package.price.toLocaleString('id-ID');
+            
+            if (booking.transportFee > 0) {
+                document.getElementById('receiptTransportFee').classList.remove('hidden');
+            } else {
+                document.getElementById('receiptTransportFee').classList.add('hidden');
+            }
+            
+            document.getElementById('receiptTotal').textContent = 'Rp ' + booking.totalPrice.toLocaleString('id-ID');
+            document.getElementById('receiptCreated').textContent = new Date(booking.createdAt).toLocaleString('id-ID', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('receiptSection').classList.remove('hidden');
+        }
+
+        function printReceipt() {
+            window.print();
+        }
+
+        function downloadReceipt() {
+            if (!currentReceipt) {
+                showToast('Tidak ada resi untuk didownload');
+                return;
+            }
+
+            showToast('Sedang membuat PDF...');
+
+            const element = document.getElementById('receiptContent');
+            const buttons = document.querySelectorAll('.no-print');
+            
+            // Hide buttons temporarily
+            buttons.forEach(btn => btn.style.display = 'none');
+
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff',
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            }).then(canvas => {
+                // Show buttons again
+                buttons.forEach(btn => btn.style.display = '');
+
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                const imgWidth = 190;
+                const pageHeight = 277;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 10;
+
+                pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save(`Resi-GroominAja-${currentReceipt.receiptNumber}.pdf`);
+                showToast('PDF berhasil didownload!');
+            }).catch(error => {
+                // Show buttons again
+                buttons.forEach(btn => btn.style.display = '');
+                
+                console.error('Error:', error);
+                showToast('Gunakan Print untuk save PDF');
+                setTimeout(() => {
+                    window.print();
+                }, 1000);
+            });
+        }
+
+        function sendReceiptToWhatsApp() {
+            if (!currentReceipt) return;
+            
+            const serviceTypeText = {
+                'datang-langsung': 'Datang Langsung',
+                'home-service': 'Home Service',
+                'antar-jemput': 'Antar-Jemput'
+            };
+
+            let message = `🎫 *RESI BOOKING GROOMINAJA*\n\n`;
+            message += `📋 Nomor Resi: ${currentReceipt.receiptNumber}\n\n`;
+            message += `👤 Nama: ${currentReceipt.name}\n`;
+            message += `📱 Phone: ${currentReceipt.phone}\n`;
+            message += `📦 Paket: ${currentReceipt.package.name}\n`;
+            message += `💰 Harga Paket: Rp ${currentReceipt.package.price.toLocaleString('id-ID')}\n`;
+            message += `🚗 Layanan: ${serviceTypeText[currentReceipt.serviceType]}\n`;
+            
+            if (currentReceipt.transportFee > 0) {
+                message += `💵 Biaya Transport: Rp ${currentReceipt.transportFee.toLocaleString('id-ID')}\n`;
+            }
+            
+            message += `💳 Total: Rp ${currentReceipt.totalPrice.toLocaleString('id-ID')}\n`;
+            message += `📅 Tanggal: ${new Date(currentReceipt.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}\n`;
+            message += `🕐 Waktu: ${currentReceipt.time} WIB\n\n`;
+            message += `⏰ Booking dibuat: ${new Date(currentReceipt.createdAt).toLocaleString('id-ID')}\n\n`;
+            message += `📍 Tunjukkan resi ini saat grooming\n`;
+            message += `📞 Hubungi: 0812-7102-2424`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${currentReceipt.phone.replace(/^0/, '62')}?text=${encodedMessage}`, '_blank');
+        }
+
         function submitBooking() {
             const name = document.getElementById('inputName').value;
             const phone = document.getElementById('inputPhone').value;
@@ -1038,9 +1278,11 @@
 
             const transportFee = (serviceType === 'home-service' || serviceType === 'antar-jemput') ? 25000 : 0;
             const totalPrice = selectedPackage.price + transportFee;
+            const receiptNumber = generateReceiptNumber();
 
             const booking = {
                 id: Date.now(),
+                receiptNumber: receiptNumber,
                 name,
                 phone,
                 serviceType,
@@ -1059,10 +1301,10 @@
             bookings.push(booking);
             saveBookings();
 
-            // Send WhatsApp notification to admin
             sendWhatsAppNotification(booking);
 
-            // Clear form
+            displayReceipt(booking);
+
             document.getElementById('inputName').value = '';
             document.getElementById('inputPhone').value = '';
             document.getElementById('inputServiceType').value = '';
@@ -1075,16 +1317,13 @@
             document.getElementById('transportPaymentSection').classList.add('hidden');
             document.getElementById('transportFeeDisplay').classList.add('hidden');
 
-            document.getElementById('bookingForm').classList.add('hidden');
-            document.getElementById('successMessage').classList.remove('hidden');
-
             const adminBtn = document.getElementById('adminBtn');
             adminBtn.classList.add('animate-shake');
             setTimeout(() => {
                 adminBtn.classList.remove('animate-shake');
             }, 500);
 
-     
+            showToast('Booking berhasil! Resi Anda telah dibuat');
         }
 
         function sendWhatsAppNotification(booking) {
@@ -1095,6 +1334,7 @@
             };
 
             let message = `🔔 *BOOKING BARU GROOMINAJA*\n\n`;
+            message += `📋 Nomor Resi: ${booking.receiptNumber}\n\n`;
             message += `👤 Nama: ${booking.name}\n`;
             message += `📱 Phone: ${booking.phone}\n`;
             message += `📦 Paket: ${booking.package.name}\n`;
@@ -1154,6 +1394,11 @@
                 <div class="border rounded-xl p-4 md:p-5 mb-4 hover:shadow-card transition-shadow ${booking.status === 'pending' ? 'bg-amber-50 border-amber-200' : 'border-gray-200'}">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                         <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold">
+                                    ${booking.receiptNumber}
+                                </span>
+                            </div>
                             <h4 class="font-bold text-gray-800 text-lg">${booking.name}</h4>
                             <p class="text-gray-600">${booking.phone}</p>
                         </div>
@@ -1195,6 +1440,9 @@
                         <button onclick="contactCustomer('${booking.phone}', '${booking.name}')" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">
                             💬 Hubungi
                         </button>
+                        <button onclick="viewCustomerReceipt(${booking.id})" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">
+                            🎫 Lihat Resi
+                        </button>
                         ${booking.status === 'pending' ? `
                             <button onclick="updateBookingStatus(${booking.id}, 'confirmed')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors text-sm font-semibold">
                                 ✓ Konfirmasi
@@ -1215,6 +1463,39 @@
             const message = encodeURIComponent(`Halo ${name}, terima kasih telah melakukan booking layanan grooming kucing di GroominAja. Kami akan segera memproses pesanan Anda.`);
             const cleanPhone = phone.replace(/^0/, '62');
             window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
+        }
+
+        function viewCustomerReceipt(bookingId) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (booking) {
+                const serviceTypeText = {
+                    'datang-langsung': 'Datang Langsung',
+                    'home-service': 'Home Service',
+                    'antar-jemput': 'Antar-Jemput'
+                };
+
+                let message = `🎫 *RESI BOOKING GROOMINAJA*\n\n`;
+                message += `📋 Nomor Resi: ${booking.receiptNumber}\n\n`;
+                message += `👤 Nama: ${booking.name}\n`;
+                message += `📱 Phone: ${booking.phone}\n`;
+                message += `📦 Paket: ${booking.package.name}\n`;
+                message += `💰 Harga Paket: Rp ${booking.package.price.toLocaleString('id-ID')}\n`;
+                message += `🚗 Layanan: ${serviceTypeText[booking.serviceType]}\n`;
+                
+                if (booking.transportFee > 0) {
+                    message += `💵 Biaya Transport: Rp ${booking.transportFee.toLocaleString('id-ID')}\n`;
+                }
+                
+                message += `💳 Total: Rp ${booking.totalPrice.toLocaleString('id-ID')}\n`;
+                message += `📅 Tanggal: ${new Date(booking.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}\n`;
+                message += `🕐 Waktu: ${booking.time} WIB\n\n`;
+                message += `⏰ Booking dibuat: ${new Date(booking.createdAt).toLocaleString('id-ID')}\n\n`;
+                message += `📍 Tunjukkan resi ini saat grooming`;
+
+                const encodedMessage = encodeURIComponent(message);
+                const cleanPhone = booking.phone.replace(/^0/, '62');
+                window.open(`https://wa.me/${cleanPhone}?text=${encodedMessage}`, '_blank');
+            }
         }
 
         function updateBookingStatus(bookingId, newStatus) {
@@ -1335,3 +1616,35 @@
     </script>
 </body>
 </html>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 animate-fade-up">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-primary flex items-center gap-2">🔒 Admin Login</h2>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">👤 Username</label>
+                    <input type="text" id="adminUsername" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan username">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">🔑 Password</label>
+                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-gray-50" placeholder="Masukkan password">
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button onclick="loginAdmin()" class="flex-1 gradient-hero text-white py-3 rounded-xl font-semibold shadow-button hover:opacity-90 transition-opacity">
+                        Login
+                    </button>
+                    <button onclick="closeAdminModal()" class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                        Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
